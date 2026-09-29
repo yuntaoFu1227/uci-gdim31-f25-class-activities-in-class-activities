@@ -2,7 +2,7 @@
 ## Devlogs
 ### W1
 Write your W1 activity Devlog here.
-
+When the cat moves, the camera stays in place because it's no longer a child of the cat.
 ### W2
 Create future Devlog sub-headers with the three # symbols, then write your Devlogs below them.
 
