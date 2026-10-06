@@ -4,6 +4,9 @@
 Write your W1 activity Devlog here.
 When the cat moves, the camera stays in place because it's no longer a child of the cat.
 ### W2
+The r, g and b variables are floats because their values are decimals between 0.0 and 1.0.
+The _bounce variable is an int because it counts how many times the ball bounces.
+The error showed me that I was using the wrong operator. I need use -=.
 Create future Devlog sub-headers with the three # symbols, then write your Devlogs below them.
 
 ## Open-Source Assets
