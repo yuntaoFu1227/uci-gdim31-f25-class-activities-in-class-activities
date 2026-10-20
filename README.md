@@ -27,7 +27,7 @@ A class is like a blueprint for a house. The blueprint describes what a house ca
 Activity 3: Methods Coding Activity
 The ball get extremely bright because their color values are multipulied by 1.5 each time they bounce fast enough. As they keep bouncing, the color values increase, making the balls brighter and brighter. 
 
-###W4
+### W4
 Table# : 3
 1. I added Rigidbody components to the Soccerball and the Cat so that they can interact with physics. I enabled Is Trigger on the Goal so the ball could pass through it while still detecting when a goal was scored, And I kept Is Trigger unchecked on the Cat and SoccerBall so they could physically collide with other objects.
 2. I forgot to add Bounce off Wall(Script) to SoccerBall. After making these changes, I tested the game again.
