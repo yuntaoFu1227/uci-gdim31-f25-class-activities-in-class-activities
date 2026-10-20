@@ -7,8 +7,10 @@ public class SoccerBall : MonoBehaviour
     [SerializeField] private TMP_Text _pointsText;
     [SerializeField] private TMP_Text _timeText;
     [SerializeField] private ParticleSystem _goalVFX;
+    private int _points = 0;
+    private float _time = 0f;
 
-    // STEP 1 -----------------------------------------------------------------
+    // STEP 1 ----------------------------------------------- ------------------
     // The OnTriggerEnter method is a collision method called by Unity that
     //      tells our object when it's hit a collider with Is Trigger checked.
     // Uncomment and FIX the METHOD SIGNATURE to make this method work.
@@ -21,21 +23,29 @@ public class SoccerBall : MonoBehaviour
     //
     // Also, uncomment and FIX the Debug.Log line.
 
-    //private ?? ??
-    //{
+    private void OnTriggerEnter(Collider Other)
+    {
         // finish STEP 1 by uncommenting and fixing the below line!
-        //Debug.Log(SoccerBall detected a collision with a trigger collider!);
+        if (Other.gameObject.CompareTag("Goal"))
+        {
+            MadeGoal();
+        }
+    }
+    private void Update()
+    {
+        _time += Time.deltaTime;
+        _timeText.text = _time.ToString("F2");
+    }
+    // STEP 2 -------------------------------------------------------------
+    // Write an IF STATEMENT to check if the game object we collided with
+    //      has the tag "Goal".
+    // Refer to the slides for an example of how to check this :)
+    //
+    // Then, move your Debug.Log() statement so that it's only called if
+    //      the colliding object has the "Goal" tag.
 
-        // STEP 2 -------------------------------------------------------------
-        // Write an IF STATEMENT to check if the game object we collided with
-        //      has the tag "Goal".
-        // Refer to the slides for an example of how to check this :)
-        //
-        // Then, move your Debug.Log() statement so that it's only called if
-        //      the colliding object has the "Goal" tag.
 
-
-        // STEP 2 -------------------------------------------------------------
+    // STEP 2 -------------------------------------------------------------
     //}
 
     // STEP 1 -----------------------------------------------------------------
@@ -49,17 +59,17 @@ public class SoccerBall : MonoBehaviour
     // Once you've created MadeGoal,
     //      move your Debug.Log() statement into MadeGoal, and
     //      call MadeGoal from inside your if statement in OnTriggerEnter.
-    
-        // STEP 4 -------------------------------------------------------------
-        // _goalVFX is a ParticleSystem, a Component for creating VFX.
-        // ParticleSystem has a method named Play() that displays the VFX:
-        // https://docs.unity3d.com/6000.0/Documentation/ScriptReference/ParticleSystem.Play.html 
-        //
-        // Call Play on _goalVFX.
 
-        // STEP 4 -------------------------------------------------------------
-    
-    
+    // STEP 4 -------------------------------------------------------------
+    // _goalVFX is a ParticleSystem, a Component for creating VFX.
+    // ParticleSystem has a method named Play() that displays the VFX:
+    // https://docs.unity3d.com/6000.0/Documentation/ScriptReference/ParticleSystem.Play.html 
+    //
+    // Call Play on _goalVFX.
+
+    // STEP 4 -------------------------------------------------------------
+
+
     // STEP 3 -----------------------------------------------------------------
 
 
@@ -78,7 +88,7 @@ public class SoccerBall : MonoBehaviour
     //      2. Use your MadeGoal method to update the points and text.
     //
     // STEP 5 -----------------------------------------------------------------
-    
+
 
     // STEP 6 -----------------------------------------------------------------
     // Like the last step, these flags do NOT show you where to put all of the
@@ -95,4 +105,12 @@ public class SoccerBall : MonoBehaviour
     //      2. Use the MadeGoal method to reset your
     //              time variable when the player makes a goal. 
     // STEP 6 -----------------------------------------------------------------
+    private void MadeGoal ()
+    {
+        Debug.Log("Soccerball detected a collision with a trigger collider!");
+        _goalVFX.Play();
+        _points++;
+        _pointsText.text = _points.ToString();
+        _time = 0f;
+    }
 }
