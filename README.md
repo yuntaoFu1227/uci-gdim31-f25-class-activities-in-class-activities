@@ -32,6 +32,11 @@ Table# : 3
 1. I added Rigidbody components to the Soccerball and the Cat so that they can interact with physics. I enabled Is Trigger on the Goal so the ball could pass through it while still detecting when a goal was scored, And I kept Is Trigger unchecked on the Cat and SoccerBall so they could physically collide with other objects.
 2. I forgot to add Bounce off Wall(Script) to SoccerBall. After making these changes, I tested the game again.
    
+### W5
+1. The class needs a NacMenshAgent agent and a Transform Target.
+2. I use the Unity's Start() method.
+3. In Start() method, I will use GetComponent<NavMeshAgent>() to get the NavMeshAgent attached to the Deer GameObject.
+
 ## Open-Source Assets
 ### W1
 - Animals: https://assetstore.unity.com/packages/3d/characters/animals/animals-free-animated-low-poly-3d-models-260727 
