@@ -37,6 +37,19 @@ Table# : 3
 2. I use the Unity's Start() method.
 3. In Start() method, I will use GetComponent<NavMeshAgent>() to get the NavMeshAgent attached to the Deer GameObject.
 
+### W7
+Activity1:https://docs.google.com/document/d/1aeLK5I-99IDjuatIuVXIrAsnugJpk2Gnpb_A2gVelQQ/edit?usp=sharing
+category assignment: Unity coding
+Activity2:
+Member Variables
+speed – Controls the bat’s movement speed.
+cat – Stores the player’s Transform.
+isChasing – Determines whether the bat should chase the player.
+Methods
+Update() – Unity method that updates the bat’s position while chasing.
+StartChasing() – Custom method that enables chasing.
+StopChasing() – Custom method that disables chasing.
+
 ## Open-Source Assets
 ### W1
 - Animals: https://assetstore.unity.com/packages/3d/characters/animals/animals-free-animated-low-poly-3d-models-260727 
