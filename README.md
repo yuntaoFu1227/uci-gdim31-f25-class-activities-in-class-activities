@@ -38,9 +38,9 @@ Table# : 3
 3. In Start() method, I will use GetComponent<NavMeshAgent>() to get the NavMeshAgent attached to the Deer GameObject.
 
 ### W7
-Activity1:https://docs.google.com/document/d/1aeLK5I-99IDjuatIuVXIrAsnugJpk2Gnpb_A2gVelQQ/edit?usp=sharing
+*Activity1:https://docs.google.com/document/d/1aeLK5I-99IDjuatIuVXIrAsnugJpk2Gnpb_A2gVelQQ/edit?usp=sharing
 category assignment: Unity coding
-Activity2:
+*Activity2:
 Member Variables
 speed – Controls the bat’s movement speed.
 cat – Stores the player’s Transform.
