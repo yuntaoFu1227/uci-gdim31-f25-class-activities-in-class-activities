@@ -1,3 +1,4 @@
+using System.Numerics;
 using UnityEngine;
 
 public class MuskratW7 : MonoBehaviour
@@ -46,13 +47,18 @@ public class MuskratW7 : MonoBehaviour
         // You might want to look below Step 3 for an example :D
         
         float leftright = Input.GetAxis("Horizontal");
-        
+        UnityEngine.Vector3 upDirection = transform.TransformDirection(UnityEngine.Vector3.up);
+        transform.RotateAround(
+            transform.position,
+            upDirection,
+            leftright * _rotationSpeed * Time.deltaTime
+            );
 
 
         // STEP 3 -------------------------------------------------------------
 
         float forward = Input.GetAxis("Vertical");
-        Vector3 axis = transform.TransformDirection(Vector3.right);
+        UnityEngine.Vector3 axis = transform.TransformDirection(UnityEngine.Vector3.right);
         transform.RotateAround(
             _sphereTransform.position,
             axis,
@@ -65,7 +71,10 @@ public class MuskratW7 : MonoBehaviour
         //      the Muskrat.
         // The Muskrat should never play the "flying" animation while on a
         //      bubble.
+        bool running = Mathf.Abs(Input.GetAxis("Vertical")) > 0.1f;
 
+        _animator.SetBool("flying", false);
+        _animator.SetBool("running", running);
 
         // STEP 5 -------------------------------------------------------------
     }
@@ -86,6 +95,9 @@ public class MuskratW7 : MonoBehaviour
         //      like up, left, right, or forward.
 
         float leftright = Input.GetAxis("Horizontal");
+        transform.Rotate(
+            UnityEngine.Vector3.up * leftright * _rotationSpeed * Time.deltaTime
+            );
 
         // STEP 1 -------------------------------------------------------------
 
@@ -96,7 +108,7 @@ public class MuskratW7 : MonoBehaviour
         // This line of code is incorrect. 
         // Replace it with a different line of code that uses 'movement' to
         //      move the Muskrat forwards and backwards.
-        transform.position += movement * Vector3.forward * _moveSpeed * Time.deltaTime;
+        transform.position += movement * transform.forward * _moveSpeed * Time.deltaTime;
 
         // STEP 2 -------------------------------------------------------------
 
@@ -108,7 +120,14 @@ public class MuskratW7 : MonoBehaviour
         // You may also find the absolute value method, Mathf.Abs(), helpful:
         //      https://docs.unity3d.com/6000.0/Documentation/ScriptReference/Mathf.Abs.html
 
-        
+        bool flying = Mathf.Abs(_rigidbody.linearVelocity.y) > 0.1f;
+
+        bool running =
+            !flying &&
+            Mathf.Abs(Input.GetAxis("Vertical")) > 0.1f;
+
+        _animator.SetBool("flying", flying);
+        _animator.SetBool("running", running);
         // STEP 4 -------------------------------------------------------------
     }
 
@@ -118,7 +137,7 @@ public class MuskratW7 : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             _rigidbody.isKinematic = false;
-            _rigidbody.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
+            _rigidbody.AddForce(UnityEngine.Vector3.up * _jumpForce, ForceMode.Impulse);
 
             if (_sphereTransform != null)
             {
@@ -142,11 +161,11 @@ public class MuskratW7 : MonoBehaviour
 
             ContactPoint contact = collision.GetContact(0);
 
-            Vector3 tangent = Vector3.Cross(Vector3.right, contact.normal);
+            UnityEngine.Vector3 tangent = UnityEngine.Vector3.Cross(UnityEngine.Vector3.right, contact.normal);
 
             transform.SetPositionAndRotation(
                 contact.point,
-                Quaternion.LookRotation(tangent, contact.normal)
+                UnityEngine.Quaternion.LookRotation(tangent, contact.normal)
             );
         }
     }
